@@ -1,0 +1,75 @@
+<html>
+    <head>
+        <title><?php echo ucfirst(strtolower($_SERVER['SERVER_NAME']))." - Censor Dodge ".$proxy->version; ?></title>
+        <link rel="stylesheet" type="text/css" href="<?php echo str_replace(basename($_SERVER["SCRIPT_NAME"]),"",cdURL)."plugins/surf/includes/stylesheet.css"?>">
+	<meta name="viewport" content="width=650">
+    </head>
+
+    <body>
+        <div id="background"></div>
+        <div id="proxySettings" style="display:none;">
+            <span onclick="document.getElementById('proxySettings').style.display = 'none';" style="cursor:pointer; float: right;">X</span>
+            <h2 style="margin-top:0; margin-bottom:14px;">Proxy Settings:</h2>
+            <div>
+                <?php
+                echo "<form style='margin-bottom:5px;' action='".cdURL."' method='POST'>";
+                foreach($settings as $name => $setting) { //Toggle option for setting listed in array, completely dynamic
+                    echo '<span style="padding-right:20px;"><input type="checkbox" '.($proxy->{$setting[0]} ? "checked" : "") .' name="'.$setting[0].'" value="'.$setting[1].'"> '.$name."</span>";
+                }
+                echo "<br><input style='margin-top: 19px;' type='submit' name='updateSettings' value='Update Settings'><form action='".cdURL."' method='POST'><input style='margin-left: 5px;' type='submit' value='Reset' name='resetSettings'></form></form>";
+                ?>
+            </div>
+        </div>
+
+        <div id="recentlyViewed" style="display:none;">
+            <span onclick="document.getElementById('recentlyViewed').style.display = 'none';" style="cursor:pointer; float: right;">X</span>
+            <?php $file = $proxy->parseLogFile(date("d-m-Y").".txt"); //Parse log file of current date format ?>
+            <h2 style="margin-top:0; margin-bottom:14px;"><?php echo "Pages Viewed Today (Total - ".count($file)." By ".count($proxy->sortParsedLogFile($file, "IP"))." Users):"; ?></h2>
+            <?php
+            if (count($views = $proxy->sortParsedLogFile($file, "URL"))>0) {
+                echo "<div id='tableParent' style='max-height: 500px; overflow-y: auto;'><table><thead><td><b>Website</b></td><td><b>View Count</b></td></thead>"; //Table title
+                foreach($views as $URL => $logs)  {
+                    echo "<tr><td style='padding-right: 80px;'>".$URL."</td><td>".count($logs)."</td></tr>"; //Table row for each parsed log
+                }
+                echo "</table></div>";
+            }
+            else {
+                echo "<p style='margin: 0;'>No pages have been viewed yet today!</p>"; //No logs in file so just display generic message
+            }
+            ?>
+        </div>
+
+        <div id="container">
+            <a href="<?php echo cdURL; ?>" id="header"><?php echo ucfirst(strtolower($_SERVER['SERVER_NAME'])); ?></a>
+            <div id="messagebox" style="background: #e82000; color:#fff;max-width: 590px; text-align:left; margin:0 auto; padding:10px; margin-bottom:10px;border-radius: 7px"><span style="display: inline-block;word-break: break-word;width: 97%;"><?php echo $errorString; ?></span><span onclick="document.getElementById('messagebox').style.display = 'none';" style="display: inline-block;cursor:pointer; float: right; color:#fff;">X</span></div>
+            <div id="textbox">
+                <?php
+                echo "<script>function goToPage() { event.preventDefault(); var URL = document.getElementsByName('cdURL')[0].value; if (URL!='') { window.location = '?cdURL=' + ".($proxy->encryptURLs ? 'btoa(URL)' : 'URL')."; } }</script>";
+                ?>
+                <form action='#' method='GET' onsubmit='goToPage();'>
+                    <input id="box" type="text" name='cdURL' value="<?php echo $proxy->getURL(); ?>" placeholder="URL" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+                    <input id="button" type="submit" value="Go!">
+                </form>
+            </div>
+            <div id="options">
+                <table style="width:100%;">
+                    <tr>
+                        <td><a onclick="document.getElementById('proxySettings').style.display = 'block';" style="cursor:pointer; color:#000; text-decoration: none;">Proxy Settings</a></td>
+                        <td><a onclick="document.getElementById('recentlyViewed').style.display = 'block';" style="position: relative;left: 17%;cursor:pointer; color:#000; text-decoration: none; text-align:center;">Recently Viewed</a></td>
+                        <td>
+                            <?php
+                            if (file_exists($proxy->cookieDIR)) {
+                                echo "<a href=\"?clearCookies\" style=\"color:#000; text-decoration: none; float:right;\">Clear Cookies</a>";
+                            }
+                            else {
+                                echo "<div style=\"cursor:default; color:#000; text-decoration: none; float:right;\">No Cookies</div>";
+                            }
+                            ?>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div id="poweredby">Powered By <a href="http://censordodge.com" target="blank">Censor Dodge V<?php echo $proxy->version; ?></a></div>
+    </body>
+</html>

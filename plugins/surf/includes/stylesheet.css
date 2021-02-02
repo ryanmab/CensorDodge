@@ -1,0 +1,174 @@
+body {
+    margin:0;
+    font-family:'Myriad Pro Regular', Times, serif !important;
+    font-weight:normal;
+}
+#background {
+    position: fixed;
+    z-index: -100;
+    width:100%;
+    height:100%;
+    left:-5px;
+    top:-5px;
+    padding:10px;
+    -webkit-filter: blur(5px);
+    -moz-filter: blur(5px);
+    -o-filter: blur(5px);
+    -ms-filter: blur(5px);
+    filter: blur(5px);
+    background: url("background.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+#header {
+    color:#b0cccb;
+    font-size:40px;
+    text-shadow: rgba(0,0,0,0.9) 0 0 10px;
+    text-decoration:none;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+#header:hover { color:#85c8c6; }
+#container {
+    vertical-align: middle;
+    position: absolute;
+    width:50%;
+    min-width:400px;
+    top: 50%;
+    left: 50%;
+    text-align:center;
+    transform: translate(-50%, -50%);
+    -webkit-animation: fadein 2s; /* Safari, Chrome and Opera > 12.1 */
+       -moz-animation: fadein 2s; /* Firefox < 16 */
+        -ms-animation: fadein 2s; /* Internet Explorer */
+         -o-animation: fadein 2s; /* Opera < 12.1 */
+            animation: fadein 2s;
+}
+#textbox {
+    border:solid 3px #b0cccb;
+    border-radius: 7px;
+    height:65px;
+    margin: 0 auto;
+    max-width: 600px;
+    box-shadow: rgba(0,0,0,0.7) 0 0 7px;
+    background: rgba(255,255,255,0.5);
+    text-align: left;
+}
+#textbox #box::-webkit-input-placeholder{ color:#000; }
+#textbox #box:-ms-input-placeholder { color:#000; }
+#textbox #box {
+    margin-top: 1px;
+    padding-left:20px;
+    padding-right:20px;
+    border:0;
+    width:82%;
+    height:100%;
+    background: transparent;
+    color: #000;
+    font-size:30px;
+}
+#textbox #box:focus {outline:0;}
+#textbox #button {
+    width:17.4%;
+    float: right;
+    padding-left:10px;
+    padding-top:2px;
+    border-top-right-radius:5px;
+    border-bottom-right-radius:5px;
+    border:0;
+    height:100%;
+    font-size:30px;
+    cursor:pointer;
+    background: rgba(255,255,255,0.5);
+    -webkit-appearance: none;
+    border-left:3px solid #b0cccb;
+}
+#textbox #button:hover { background: rgba(255,255,255,0.7); }
+#textbox #button:active { background: rgba(255,255,255,0.7); }
+#textbox #button:focus {outline:0;}
+#options {
+    margin: 0 auto;
+    padding:10px 0 0 0;
+    max-width: 600px;
+}
+#proxySettings {
+    background:#fff;
+    position: absolute;
+    z-index: 99999;
+    width:50%;
+    min-width:400px;
+    border-radius: 7px;
+    padding-top:10px;
+    padding-bottom:10px;
+    padding-left:15px;
+    padding-right:15px;
+    box-shadow: rgba(0,0,0,0.7) 0 0 7px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+#recentlyViewed {
+    background:#fff;
+    position: absolute;
+    z-index: 99999;
+    width:50%;
+    min-width:400px;
+    border-radius: 7px;
+    padding-top:10px;
+    padding-bottom:10px;
+    padding-left:15px;
+    padding-right:15px;
+    box-shadow: rgba(0,0,0,0.7) 0 0 7px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+#poweredby {
+    position: fixed;
+    background: #000;
+    right: 15px;
+    bottom: 10px;
+    padding: 5px;
+    opacity: 0.3;
+}
+#poweredby, #poweredby a:visited, #poweredby a:link {
+    text-decoration: none;
+    color: #fff;
+    font-size: 13px;
+    font-family: "Times New Roman", Times, serif;
+}
+@font-face {
+    font-family: 'Myriad Pro Regular';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Myriad Pro Regular'), url('Myriad-Pro-Regular.woff') format('woff');
+}
+@keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Firefox < 16 */
+@-moz-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Safari, Chrome and Opera > 12.1 */
+@-webkit-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Internet Explorer */
+@-ms-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Opera < 12.1 */
+@-o-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}

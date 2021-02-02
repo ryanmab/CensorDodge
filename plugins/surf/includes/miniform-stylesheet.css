@@ -1,0 +1,71 @@
+#miniForm {
+    vertical-align: middle;
+    z-index: 9999999999;
+    position: fixed;
+    width: 45%;
+    min-width:400px;
+    height:70px;
+    padding:20px;
+    top: 50%;
+    left: 50%;
+    text-align:center;
+    transform: translate(-50%, -50%);
+    background: rgba(248,248,248,1);
+    box-shadow: rgba(0,0,0,0.7) 0 0 7px;
+    border-radius:7px;
+    box-sizing: initial;
+}
+#miniForm #textbox {
+    width:100%;
+    border:solid 3px #b0cccb;
+    border-radius: 7px;
+    height:65px;
+    min-width: 400px;
+    max-width: 600px;
+    background: rgba(255,255,255,0.8);
+    text-align: left;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+#miniForm #textbox form {
+    height: 66px;
+}
+#miniForm #textbox #box::-webkit-input-placeholder{ color:#000; }
+#miniForm #textbox #box:-ms-input-placeholder { color:#000; }
+#miniForm #textbox #box {
+    all:initial;
+    padding-left:20px;
+    border:0;
+    width: 76%;
+    height:100%;
+    background: transparent;
+    color: #000;
+    font-size:30px;
+    font-family:'Myriad Pro Regular', Times, serif !important;
+    font-weight:normal;
+}
+#miniForm #textbox #box:focus {outline:0;}
+#miniForm #textbox #button {
+    all:initial;
+    right: 0px;
+    position: absolute;
+    width:17.4%;
+    float: right;
+    text-align:center;
+    border-top-right-radius:5px;
+    border-bottom-right-radius:5px;
+    border:0;
+    height:100%;
+    font-size:30px;
+    cursor:pointer;
+    background: rgba(255,255,255,0.5);
+    -webkit-appearance: none;
+    border-left:3px solid #b0cccb;
+    font-family:'Myriad Pro Regular', Times, serif !important;
+    font-weight:normal;
+}
+#miniForm #textbox #button:hover { background: rgba(255,255,255,0.7); }
+#miniForm #textbox #button:active { background: rgba(255,255,255,0.7); }
+#miniForm #textbox #button:focus {outline:0;}

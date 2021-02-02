@@ -1,0 +1,13 @@
+<style>@font-face {font-family: 'Myriad Pro Regular';font-style: normal;font-weight: normal;src: local('Myriad Pro Regular'), url('<?php echo cdURL."plugins/surf/includes/MYRIADPRO-REGULAR.woff"?>') format('woff');}</style>
+<link rel="stylesheet" type="text/css" href="<?php echo str_replace(basename($_SERVER["SCRIPT_NAME"]),"",cdURL)."plugins/surf/includes/miniform-stylesheet.css"?>">
+<div onclick="document.getElementById('miniForm').style.display = 'block';" style="all:initial;z-index: 9999999999;position: fixed;left:15px; top:10px;cursor:pointer;background:#fff; border:1px solid #ccc; border-radius:7px; padding: 5px 10px 5px 10px;">+</div>
+<div id="miniForm" style="display:none;">
+    <span onclick="document.getElementById('miniForm').style.display = 'none';" style="all:initial;position:relative;right: -13px;top: -15px;cursor:pointer; float: right;">X</span>
+        <div id="textbox">
+            <?php echo "<script> function goToPage() { event.preventDefault(); if (document.getElementsByName('cdURL')[0].value!='') { window.location = '?cdURL=' + ".($proxy->encryptURLs ? 'btoa(document.getElementsByName("cdURL")[0].value)' : 'document.getElementsByName("cdURL")[0].value')."; } } </script>"; ?>
+            <form action='#' method='GET' onsubmit='goToPage();'>
+                <input id="box" type="text" name='cdURL' value="" placeholder="URL" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+                <input id="button" type="submit" value="Go!">
+            </form>
+        </div>
+</div>
