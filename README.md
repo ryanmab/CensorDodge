@@ -4,7 +4,7 @@
 
 **Current Stable Release:** V1.83
 
-Censor Dodge is a lightweight and customisable proxy script built on PHP. The standalone library is intended to act as an extensible system that is easily customisable with plugins and themes.
+[Censor Dodge](https://censordodge.com/) is a lightweight and customisable proxy script built on PHP. The standalone library is intended to act as an extensible system that is easily customisable with plugins and themes.
 
 It started simply as a personal project prompted by the proxy sites on the market being slow, ridden with popups and running outdated proxy software, and over the last 6 years has grown into a complete software solution.
 
