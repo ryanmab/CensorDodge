@@ -1,4 +1,4 @@
-<style>@font-face {font-family: 'Myriad Pro Regular';font-style: normal;font-weight: normal;src: local('Myriad Pro Regular'), url('<?php echo cdURL."plugins/surf/includes/MYRIADPRO-REGULAR.woff"?>') format('woff');}</style>
+<style>@font-face {font-family: 'Myriad Pro Regular';font-style: normal;font-weight: normal;src: local('Myriad Pro Regular'), url('<?php echo cdURL."plugins/surf/includes/Myriad-Pro-Regular.woff"?>') format('woff');}</style>
 <link rel="stylesheet" type="text/css" href="<?php echo str_replace(basename($_SERVER["SCRIPT_NAME"]),"",cdURL)."plugins/surf/includes/miniform-stylesheet.css"?>">
 <div onclick="document.getElementById('miniForm').style.display = 'block';" style="all:initial;z-index: 9999999999;position: fixed;left:15px; top:10px;cursor:pointer;background:#fff; border:1px solid #ccc; border-radius:7px; padding: 5px 10px 5px 10px;">+</div>
 <div id="miniForm" style="display:none;">
