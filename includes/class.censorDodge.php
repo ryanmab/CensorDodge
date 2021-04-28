@@ -572,7 +572,7 @@ class censorDodge {
 			"text/html" => array("html","htm"),
 			"text/*" => array("php","css","xml","plain"),
 			"application/*" => array("pdf","zip","xml","rss","xhtml"),
-			"font/*" => array("ttf","otf","woff","eot"),
+			"font/*" => array("ttf","otf","woff","woff2","eot"),
 			"image/*" => array("jpeg","jpg","gif","png","svg"),
 			"video/*" => array("3gp","mreg","mpg","mpe","mp3"),
 			"application/json" => "json",
