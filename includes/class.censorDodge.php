@@ -202,7 +202,7 @@ class censorDodge {
 					}
 
 					while (substr($path,strlen($path)-1,strlen($path))=="/") { $path = substr($path,0,strlen($path)-1); } //Remove any slashes from end of URL which are not needed
-					$URL = (preg_match("~(^\./|\\\\./)~i",$URL) ? preg_replace("~(^\./|/./)~i","/",$URL) : $path."/".$URL); //Recompile the URL so that it is valid
+                    $URL = (preg_match("~(^\./|^\\\\./)~i",$URL) ? preg_replace("~(^\./|^/./)~i", $path."/",$URL) : $path."/".$URL); //Recompile the URL so that it is valid
 				}
 			}
 
@@ -572,7 +572,7 @@ class censorDodge {
 			"text/html" => array("html","htm"),
 			"text/*" => array("php","css","xml","plain"),
 			"application/*" => array("pdf","zip","xml","rss","xhtml"),
-			"font/*" => array("ttf","otf","woff","eot"),
+			"font/*" => array("ttf","otf","woff","woff2","eot"),
 			"image/*" => array("jpeg","jpg","gif","png","svg"),
 			"video/*" => array("3gp","mreg","mpg","mpe","mp3"),
 			"application/json" => "json",
