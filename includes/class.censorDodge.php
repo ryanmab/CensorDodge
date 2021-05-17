@@ -7,6 +7,8 @@ if (count(explode("&", $q=$_SERVER['QUERY_STRING']))>count($_GET)) { $_GET = arr
 class censorDodge {
     public $version = "1.83 BETA";
     public $cookieDIR, $isSSL = "";
+    // By default, cookies are stored in a temporary directory, but this can be overriden here. The directory must be writable by the process that runs CensorDodge
+    public $baseCookieDIR = "";
     private $URL, $responseHeaders, $HTTP, $getParam, $logToFile, $miniForm = "";
     private $blacklistedWebsites = array("localhost", "127.0.0.1", cdURL);
     private $hotlinkExceptions = array(cdURL);
@@ -29,6 +31,7 @@ class censorDodge {
         set_exception_handler(array($this, 'errorHandler')); //Set our custom error handler
         $this->isSSL = !(empty($_SERVER['HTTPS']) || strtolower($_SERVER['HTTPS']) == 'off'); //Check if the proxy is running on a SSL certificate
 
+        if (empty($this->baseCookieDIR)) { $this->baseCookieDIR = $this->tempdir("CensorDodgeCookies"); }
         if (!$this->createCookieDIR()) { throw new Exception("You need to have the file writing permissions enabled to use Censor Dodge V".$this->version."!"); } //Populate cookieDIR with directory string, and check for permission but don't create the file yet
         $this->logToFile = $logToFile; //Toggle functions used to log page URLs into files
         $this->hotlinkExceptions = $hotlinkExceptions!==false ? array_merge($this->hotlinkExceptions, is_array($hotlinkExceptions) ? $hotlinkExceptions : array()) : false; //Add domains to allow for hotlinking
@@ -279,8 +282,8 @@ class censorDodge {
     }
 
     public function createCookieDIR() {
-        $this->cookieDIR = dirname(__FILE__).DS.'cookies'.DS.base64_encode((isset($_SERVER['HTTP_X_FORWARDED_FOR']) ? $_SERVER['HTTP_X_FORWARDED_FOR'] : $_SERVER['REMOTE_ADDR'])).".txt"; //Generate cookie file directory
-        return (bool)is_writable((!file_exists(dirname($this->cookieDIR)) ? dirname(__FILE__) : dirname($this->cookieDIR))); //Return whether the cookie directory is writable
+        $this->cookieDIR = $this->baseCookieDIR.DS.base64_encode((isset($_SERVER['HTTP_X_FORWARDED_FOR']) ? $_SERVER['HTTP_X_FORWARDED_FOR'] : $_SERVER['REMOTE_ADDR'])).".txt"; //Generate cookie file directory
+        return (bool)is_writable((!file_exists(dirname($this->cookieDIR)) ? $this->baseCookieDIR : dirname($this->cookieDIR))); //Return whether the cookie directory is writable
     }
 
     public function clearCookies($serverSide = true, $clientSide = true) {
@@ -709,5 +712,21 @@ class censorDodge {
 
         curl_close($curl); //Close cURL connection safely once complete
         return $vars;
+    }
+
+    // Returns a directory named $dirname inside the temporary directory of the OS (and creates this directory if necessary)
+    // tempnam() is not used here, because we want to keep the same directory for different calls
+    public function tempdir($dirname) {
+        $tempfile = rtrim(sys_get_temp_dir(), DS) . DS . $dirname;
+        if (file_exists($tempfile)) {
+            if (is_dir($tempfile)) {
+                return $tempfile;
+            }
+            else {
+                unlink($tempfile);
+            }
+        }
+        mkdir($tempfile);
+        return $tempfile;
     }
 }
