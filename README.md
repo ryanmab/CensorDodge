@@ -22,18 +22,33 @@ A full demonstration of the script is available free of change on [CensorDodge.c
 
 This includes an approved and automatic one-click proxy setup tool, which enables easy creation of custom web proxies at a [click of a button](https://censordodge.com/#setup).
 
-## Installation
+## Running Locally
 
+Censor Dodge can be run locally in two different ways using Docker:
 
-1. Upload via FTP to your favourite hosting solution.
-2. Visit your website (no installation needed; the script is completely pre-configured).
+- Using the provided `docker-compose.yml` to compose and build the image and run the container automatically.
+  ```sh
+  docker-compose up
+  ```
+
+<h2 style="font-size: 1rem; width: 100%; text-align: center; border-bottom: 1px solid #ccc; line-height: 0.1em; margin: 30px 0 40px;"><span style="background:#fff; padding:0 10px;">OR</span></h2>
+
+- Using the provided `.Dockerfile` to build a custom image which can be run in a container.
+  ```sh
+  docker build . -t censordodge
+  docker run -p 80:80 -it censordodge
+  ```
 
 ## Hosting
 
-Censor Dodge will run on any basic PHP hosting (people have even had success running Censor Dodge on $1 per year shared hosting). 
+Censor Dodge will run on any basic PHP hosting (people have even had success running Censor Dodge on $1 per year shared hosting). Alternatively, you can run the project as a Docker image (using the pre-configured `.Dockerfile`).
 
-The only thing you need to ensure is that you have enough bandwidth to handle the traffic, and you can sufficiently scale the solution as you get more visitors.
+No installation steps are needed, the script is completely pre-configured. The only thing you need to ensure is that you have enough bandwidth to handle the traffic, and you can sufficiently scale the solution as you get more visitors.
 
 ## Author
 
 By Ryan Maber - [View Portfolio](https://ryanmaber.com/)
+
+## Contributors
+- [Mossroy](https://github.com/mossroy)
+- [abcnet-lu](https://github.com/abcnet-lu)
