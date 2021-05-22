@@ -31,7 +31,7 @@ Censor Dodge can be run locally in two different ways using Docker:
   docker-compose up
   ```
 
-<h2 style="font-size: 1rem; width: 100%; text-align: center; border-bottom: 1px solid #ccc; line-height: 0.1em; margin: 30px 0 40px;"><span style="background:#fff; padding:0 10px;">OR</span></h2>
+<h3 align="center">OR</h3>
 
 - Using the provided `.Dockerfile` to build a custom image which can be run in a container.
   ```sh
