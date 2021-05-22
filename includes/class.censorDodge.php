@@ -263,7 +263,7 @@ class censorDodge {
     }
 
     public function getProxySettings() {
-        $hiddenVars = array("version","cookieDIR","isSSL","logToFile","preventHotlinking"); $editableVars = array();
+        $hiddenVars = array("version","cookieDIR","isSSL","logToFile","preventHotlinking", "useTemporaryDirectory"); $editableVars = array();
         foreach (get_object_vars($this) as $n => $v) {
             if (is_bool($v) && !in_array($n,$hiddenVars)) {
                 $id = 0; $parts = array();
