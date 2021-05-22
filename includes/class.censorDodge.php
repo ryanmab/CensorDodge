@@ -617,7 +617,8 @@ class censorDodge {
     }
 
     public function clearLogs() {
-        $files = glob(BASE_DIRECTORY.DS."logs".DS."*");
+        $baseDIR = $this->useTemporaryDirectory ? $this->getTemporaryDirectory("logs") : BASE_DIRECTORY.DS."logs".DS;
+        $files = glob($baseDIR."*");
         foreach ($files as $n => $file) { if (@unlink($file)) { unset($files[$n]); } } //Delete all log files in the folder
 
         return empty($files); //Return whether the logs folder is empty
@@ -626,9 +627,10 @@ class censorDodge {
     public function parseLogFile($logFileName = "ALL") {
         $parsedFile = array();
 
-        if (file_exists(BASE_DIRECTORY.DS."logs".DS.$logFileName) || trim(strtoupper($logFileName))=="ALL") {
+        $baseDIR = $this->useTemporaryDirectory ? $this->getTemporaryDirectory("logs") : BASE_DIRECTORY.DS."logs".DS;
+        if (file_exists($baseDIR.$logFileName) || trim(strtoupper($logFileName))=="ALL") {
             if (trim(strtoupper($logFileName))=="ALL") { $logFileName = "*.txt"; } //Loop through all files with when flagged as "ALL" files
-            foreach (glob(BASE_DIRECTORY."logs".DS.$logFileName) as $file) {
+            foreach (glob($baseDIR.$logFileName) as $file) {
                 if ($handle = fopen($file, "r")) {
                     while (($line = fgets($handle)) !== false) {
                         preg_match("~\[(.*?)\]\[([0-9\.\:]+)\]\[([a-zA-Z0-9]+)\]\s(.*?)~isU", $line, $matches); unset($matches[0]); //Parse format of log files
