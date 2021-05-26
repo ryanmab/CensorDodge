@@ -33,7 +33,7 @@ Censor Dodge can be run locally in two different ways using Docker:
 
 <h3 align="center">OR</h3>
 
-- Using the provided `.Dockerfile` to build a custom image which can be run in a container.
+- Using the provided `Dockerfile` to build a custom image which can be run in a container.
   ```sh
   docker build . -t censordodge
   docker run -p 80:80 -it censordodge
@@ -41,7 +41,7 @@ Censor Dodge can be run locally in two different ways using Docker:
 
 ## Hosting
 
-Censor Dodge will run on any basic PHP hosting (people have even had success running Censor Dodge on $1 per year shared hosting). Alternatively, you can run the project as a Docker image (using the pre-configured `.Dockerfile`).
+Censor Dodge will run on any basic PHP hosting (people have even had success running Censor Dodge on $1 per year shared hosting). Alternatively, you can run the project as a Docker image (using the pre-configured `Dockerfile`).
 
 No installation steps are needed, the script is completely pre-configured. The only thing you need to ensure is that you have enough bandwidth to handle the traffic, and you can sufficiently scale the solution as you get more visitors.
 

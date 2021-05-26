@@ -280,7 +280,7 @@ class censorDodge {
     }
 
     public function createCookieDIR() {
-        $baseDIR = $this->useTemporaryDirectory ? $this->getTemporaryDirectory("cookies") : dirname(__FILE__).DS.'cookies'.DS;
+        $baseDIR = $this->useTemporaryDirectory ? $this->getTemporaryDirectory("cdCookies") : dirname(__FILE__).DS.'cookies'.DS;
         $this->cookieDIR = $baseDIR.base64_encode((isset($_SERVER['HTTP_X_FORWARDED_FOR']) ? $_SERVER['HTTP_X_FORWARDED_FOR'] : $_SERVER['REMOTE_ADDR'])).".txt"; //Generate cookie file directory
         return (bool)is_writable((!file_exists(dirname($this->cookieDIR)) ? $baseDIR : dirname($this->cookieDIR))); //Return whether the cookie directory is writable
     }
@@ -605,7 +605,7 @@ class censorDodge {
 
     public function logAction($HTTP, $URL) {
         if ($this->logToFile && !empty($URL)) {
-            $baseDIR = $this->useTemporaryDirectory ? $this->getTemporaryDirectory("logs") : BASE_DIRECTORY.DS."logs".DS;
+            $baseDIR = $this->useTemporaryDirectory ? $this->getTemporaryDirectory("cdLogs") : BASE_DIRECTORY.DS."logs".DS;
             if (!file_exists($baseDIR)) { mkdir($baseDIR, 0777); } //Create logs DIR if not found already
             $line = "[".date("H:i:s d-m-Y")."][".(isset($_SERVER['HTTP_X_FORWARDED_FOR']) ? $_SERVER['HTTP_X_FORWARDED_FOR'] : $_SERVER['REMOTE_ADDR'])."][$HTTP] ".$URL.PHP_EOL;
             $attempt = file_put_contents($baseDIR.date("d-m-Y").".txt", $line, FILE_APPEND | LOCK_EX);
@@ -617,7 +617,7 @@ class censorDodge {
     }
 
     public function clearLogs() {
-        $baseDIR = $this->useTemporaryDirectory ? $this->getTemporaryDirectory("logs") : BASE_DIRECTORY.DS."logs".DS;
+        $baseDIR = $this->useTemporaryDirectory ? $this->getTemporaryDirectory("cdLogs") : BASE_DIRECTORY.DS."logs".DS;
         $files = glob($baseDIR."*");
         foreach ($files as $n => $file) { if (@unlink($file)) { unset($files[$n]); } } //Delete all log files in the folder
 
@@ -627,7 +627,7 @@ class censorDodge {
     public function parseLogFile($logFileName = "ALL") {
         $parsedFile = array();
 
-        $baseDIR = $this->useTemporaryDirectory ? $this->getTemporaryDirectory("logs") : BASE_DIRECTORY.DS."logs".DS;
+        $baseDIR = $this->useTemporaryDirectory ? $this->getTemporaryDirectory("cdLogs") : BASE_DIRECTORY.DS."logs".DS;
         if (file_exists($baseDIR.$logFileName) || trim(strtoupper($logFileName))=="ALL") {
             if (trim(strtoupper($logFileName))=="ALL") { $logFileName = "*.txt"; } //Loop through all files with when flagged as "ALL" files
             foreach (glob($baseDIR.$logFileName) as $file) {
