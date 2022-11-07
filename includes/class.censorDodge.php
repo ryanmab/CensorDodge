@@ -229,14 +229,14 @@ class censorDodge {
 
     public function callAction($event, $vars = array()) {
         if (isset(self::$pluginFunctions[$event])) {
-            foreach (@self::$pluginFunctions[$event] as $function => $case) {
-                if (@preg_match($case, $this->URL) || empty($case)) { //If needed run against URL for specific case
-                    @call_user_func_array($function,$vars); //Run plugin function with variables
+            foreach (self::$pluginFunctions[$event] as $function => $case) {
+                if (preg_match($case, $this->URL) || empty($case)) { //If needed run against URL for specific case
+                    call_user_func_array($function,$vars); //Run plugin function with variables
                 }
             }
         }
 
-        return (count(@self::$pluginFunctions[$event])>0 ? true : false); //Return a boolean for if any functions were executed
+        return (isset(self::$pluginFunctions[$event]) ? (bool)(count(self::$pluginFunctions[$event])>0) : false); //Return a boolean for if any functions were executed
     }
 
     public function getRunningPlugins() {
@@ -665,7 +665,7 @@ class censorDodge {
     }
 
     public function curlRequest($URL, $getParameters = array(), $postParameters = array()) {
-        unset($shouldStream); unset($getParameters[$this->getParam]); unset($getParameters[substr(md5("cdGET"),0,20)]);
+        unset($shouldStream); $headers = array(); unset($getParameters[$this->getParam]); unset($getParameters[substr(md5("cdGET"),0,20)]);
         $insideOrigin = (bool)(debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS,2)[1]["class"]==get_class($this));
 
         $curl = curl_init((count($getParameters)>0) ? $URL.(strpos($URL,"?")===false ? "?" : "&").http_build_query($getParameters) : $URL); //Add GET params to base URL
