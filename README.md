@@ -1,14 +1,16 @@
-# Censor Dodge Web Proxy
+<p align="center">
+<img style="border-radius:50%" height="150px" src="https://www.censordodge.com/wp-content/uploads/2017/11/logo.svg">
+</p>
 
-<img src="https://www.censordodge.com/wp-content/uploads/2017/11/logo.svg" width="80px" />
+# Censor Dodge Web Proxy
 
 **Current Stable Release:** V1.83
 
-[Censor Dodge](https://censordodge.com/) is a lightweight and customisable proxy script built on PHP. The standalone library is intended to act as an extensible system that is easily customisable with plugins and themes.
+[Censor Dodge](https://censordodge.com/) is a lightweight and customizable proxy script developed using PHP. The main objective of this standalone library is to provide an extensible system that can be easily customized using plugins and themes.
 
-It started simply as a personal project prompted by the proxy sites on the market being slow, ridden with popups and running outdated proxy software, and over the last 6 years has grown into a complete software solution.
+Initially, it was started as a personal project due to the slow performance, pop-up ads, and outdated software of existing proxy sites in the market. Over the last 6 years, Censor Dodge has evolved into a complete software solution.
 
-This package also contains a starter theme, called **Surf** which can be easily customised (custom background images), or used as a basis for a new custom design.
+Apart from the proxy script, the package also includes a starter theme named **Surf**. This theme can be customized with personalized background images or used as a foundation for creating a new design.
 
 ## Requirements
 
@@ -27,23 +29,27 @@ This includes an approved and automatic one-click proxy setup tool, which enable
 Censor Dodge can be run locally in two different ways using Docker:
 
 - Using the provided `docker-compose.yml` to compose and build the image and run the container automatically.
-  ```sh
-  docker-compose up
-  ```
+
+```bash
+docker-compose up
+```
 
 <h3 align="center">OR</h3>
 
-- Using the provided `Dockerfile` to build a custom image which can be run in a container.
-  ```sh
-  docker build . -t censordodge
-  docker run -p 80:80 -it censordodge
-  ```
+- Using the provided `Dockerfile` to build a custom image and run it as a container.
+
+```bash
+docker build . -t censordodge
+docker run -p 80:80 -it censordodge
+```
 
 ## Hosting
 
-Censor Dodge will run on any basic PHP hosting (people have even had success running Censor Dodge on $1 per year shared hosting). Alternatively, you can run the project as a Docker image (using the pre-configured `Dockerfile`).
+Censor Dodge is a software that is designed to run on any basic PHP hosting, regardless of the provider or the package you are using. The software is so lightweight that some people have even reported successfully running it on shared hosting plans that cost as little as $1 per year. In addition to this, Censor Dodge can also be run as a Docker image, which comes with a pre-configured Dockerfile.
 
-No installation steps are needed, the script is completely pre-configured. The only thing you need to ensure is that you have enough bandwidth to handle the traffic, and you can sufficiently scale the solution as you get more visitors.
+One of the major benefits of using Censor Dodge is that you do not need to go through a complicated installation process to get it up and running. The script is already pre-configured, meaning that it is ready to use straight out of the box. All you need to do is ensure that you have enough bandwidth to handle the traffic that you expect to receive, and that you can scale the solution as your traffic grows.
+
+If you are planning to use Censor Dodge, it is important to note that the software does not require any special server requirements. This means that it can run on almost any web server that meets the basic PHP hosting requirements. Additionally, Censor Dodge is compatible with most modern web browsers, and it is easy to use, making it an ideal choice for those who are new to web development.
 
 ## Author
 
