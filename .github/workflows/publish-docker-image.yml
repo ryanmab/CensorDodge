@@ -23,7 +23,7 @@ jobs:
         uses: docker/metadata-action@v4
         with:
           images: |
-            ghcr.io/jackblk/CensorDodge
+            ghcr.io/ryanmab/CensorDodge
           tags: |
             type=ref,event=branch
             type=ref,event=pr
