@@ -24,24 +24,15 @@ This includes an approved and automatic one-click proxy setup tool, which enable
 
 ## Running Locally
 
-Censor Dodge can be run locally in two different ways using Docker:
+Censor Dodge can be run locally using Docker:
 
-- Using the provided `docker-compose.yml` to compose and build the image and run the container automatically.
   ```sh
-  docker-compose up
-  ```
-
-<h3 align="center">OR</h3>
-
-- Using the provided `Dockerfile` to build a custom image which can be run in a container.
-  ```sh
-  docker build . -t censordodge
-  docker run -p 80:80 -it censordodge
+  docker run -p 80:80 -it ghcr.io/ryanmab/censordodge
   ```
 
 ## Hosting
 
-Censor Dodge will run on any basic PHP hosting (people have even had success running Censor Dodge on $1 per year shared hosting). Alternatively, you can run the project as a Docker image (using the pre-configured `Dockerfile`).
+Censor Dodge will run on any basic PHP hosting (people have even had success running Censor Dodge on $1 per year shared hosting). Alternatively, you can run the project as a Docker image (using the `ghcr.io/ryanmab/censordodge` image).
 
 No installation steps are needed, the script is completely pre-configured. The only thing you need to ensure is that you have enough bandwidth to handle the traffic, and you can sufficiently scale the solution as you get more visitors.
 
@@ -50,5 +41,6 @@ No installation steps are needed, the script is completely pre-configured. The o
 By Ryan Maber - [View Portfolio](https://ryanmaber.com/)
 
 ## Contributors
+
 - [Mossroy](https://github.com/mossroy)
 - [abcnet-lu](https://github.com/abcnet-lu)
