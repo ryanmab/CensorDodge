@@ -26,26 +26,15 @@ This includes an approved and automatic one-click proxy setup tool, which enable
 
 ## Running Locally
 
-Censor Dodge can be run locally in two different ways using Docker:
+Censor Dodge can be run locally using Docker:
 
-- Using the provided `docker-compose.yml` to compose and build the image and run the container automatically.
-
-```bash
-docker-compose up
-```
-
-<h3 align="center">OR</h3>
-
-- Using the provided `Dockerfile` to build a custom image and run it as a container.
-
-```bash
-docker build . -t censordodge
-docker run -p 80:80 -it censordodge
-```
+  ```sh
+  docker run -p 80:80 -it ghcr.io/ryanmab/censordodge
+  ```
 
 ## Hosting
 
-Censor Dodge is a software that is designed to run on any basic PHP hosting, regardless of the provider or the package you are using. The software is so lightweight that some people have even reported successfully running it on shared hosting plans that cost as little as $1 per year. In addition to this, Censor Dodge can also be run as a Docker image, which comes with a pre-configured Dockerfile.
+Censor Dodge is a software that is designed to run on any basic PHP hosting, regardless of the provider or the package you are using. The software is so lightweight that some people have even reported successfully running it on shared hosting plans that cost as little as $1 per year. In addition to this, Censor Dodge can also be run as a Docker image (using the `ghcr.io/ryanmab/censordodge` image).
 
 One of the major benefits of using Censor Dodge is that you do not need to go through a complicated installation process to get it up and running. The script is already pre-configured, meaning that it is ready to use straight out of the box. All you need to do is ensure that you have enough bandwidth to handle the traffic that you expect to receive, and that you can scale the solution as your traffic grows.
 
@@ -56,5 +45,6 @@ If you are planning to use Censor Dodge, it is important to note that the softwa
 By Ryan Maber - [View Portfolio](https://ryanmaber.com/)
 
 ## Contributors
+
 - [Mossroy](https://github.com/mossroy)
 - [abcnet-lu](https://github.com/abcnet-lu)
